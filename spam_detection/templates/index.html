@@ -3,7 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spam Detector</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
@@ -11,25 +14,35 @@
 </head>
 <body>
     <div class="frontBg">
-        <div class="navbar">
+        <!-- Navbar -->
+        <header class="navbar">
             <nav>
                 <ul>
-                    <li><a href="{% url 'index' %}">HOME</a></li>
+                    <li><a href="{% url 'index' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About Us</a></li>
-                    <li><a href="{% url 'about' %}">Contact Us</a></li>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
             </nav>
-        <h1>Welcome to Speech Detection App</h1>
-    <div style="display: flex; justify-content: center; gap: 20px;">
-        <div>
-            <button class="button" onclick="startDetection()">Start Detecting!</button>
-        </div>
-        <div id="transcription-box" style="border: 1px solid #ddd; padding: 10px; width: 300px;">
-            <h3>Transcription</h3>
-            <p id="transcription-text">{{ transcription }}</p>
-        </div>
+        </header>
+
+        <!-- Welcome Section -->
+        <main>
+            <h1>Welcome to Speech Detection App</h1>
+
+            <!-- Detection Section -->
+            <section>
+                <button class="button" onclick="startDetection()">Start Detecting!</button>
+
+                <!-- Transcription Box -->
+                <div id="transcription-box">
+                    <h3>Transcription</h3>
+                    <p id="transcription-text">{{ transcription }}</p>
+                </div>
+            </section>
+        </main>
     </div>
 
+    <!-- JavaScript for Speech Detection -->
     <script>
         function startDetection() {
             fetch('/start-detection/')
