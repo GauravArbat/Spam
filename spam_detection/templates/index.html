@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spam Detector</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="frontBg">
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">HOME</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'about' %}">Contact Us</a></li>
+                </ul>
+            </nav>
+        <h1>Welcome to Speech Detection App</h1>
+    <div style="display: flex; justify-content: center; gap: 20px;">
+        <div>
+            <button class="button" onclick="startDetection()">Start Detecting!</button>
+        </div>
+        <div id="transcription-box" style="border: 1px solid #ddd; padding: 10px; width: 300px;">
+            <h3>Transcription</h3>
+            <p id="transcription-text">{{ transcription }}</p>
+        </div>
+    </div>
+
+    <script>
+        function startDetection() {
+            fetch('/start-detection/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        alert("Transcription: " + data.message);
+                        document.getElementById("transcription-text").textContent = data.message;
+                    } else if (data.error) {
+                        alert("Error: " + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to start speech detection.');
+                });
+        }
+    </script>
+
+</body>
+</html>

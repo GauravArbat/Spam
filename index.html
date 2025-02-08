@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spam Detector</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f4f4;  /* Optional background color */
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        background-color: #E6E6FA;
+    }
+
+    nav {
+        flex: 1;
+        text-align: right;
+    }
+
+    nav a {
+        color: white;  /* Set link color to white */
+        text-decoration: none;  /* Remove underline */
+        font-weight: 500;  /* Medium font weight */
+        transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    }
+
+    nav a:hover {
+        color: rgb(45, 43, 43);  /* Change color on hover */
+        transform: translateY(-5px);  /* Slightly lift the link */
+    }
+
+    nav ul {
+        display: inline-block;
+        list-style-type: none;
+    }
+
+    nav ul li {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    .button {
+    display:flex;
+    position: absolute;
+    overflow: hidden;
+    width: 150px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: purple;
+}
+
+.button span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+}
+
+.button:hover span {
+    transform: scaleX(1);
+}
+
+.button span:last-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.button:hover span:last-child {
+    opacity: 1;
+    background-color:purple;
+}
+
+
+
+</style>
+<body>
+    <div class="frontBg">
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">HOME</a></li>
+                    <li><a href="{{ url_for('about_us') }}">About Us</a></li>
+                    <li><a href="{{ url_for('contect_us') }}">Contact Us</a></li> <!-- Fixed typo here -->
+                </ul>
+            </nav>
+        </div>
+
+        <center>
+            <h1 style="font-weight:bold;  font-size:60px">Trust us we will help you</h1>
+            <p style="font-size:30px">Protecting you before any loss<br>Instant action.</p>
+        </center>
+    </div>
+    <button class="button">
+        Start Detecting!
+        <span></span>
+        <span>Let's Go</span>
+    </button>
+
+</body>
+</html>
